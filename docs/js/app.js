@@ -8,7 +8,7 @@ App = {
   tokensAvailable: 7500000,
 
   init: function() {
-    console.log("App initialized...")
+    alert("App initialized...")
     return App.initWeb3();
   },
 
@@ -30,7 +30,7 @@ App = {
       App.contracts.CrowSale = TruffleContract(crowSale);
       App.contracts.CrowSale.setProvider(App.web3Provider);
       App.contracts.CrowSale.deployed().then(function(crowSale) {
-        console.log("Crow Sale Address:", crowSale.address);
+        alert("Crow Sale Address:", crowSale.address);
       });
     }).done(function() {
       $.getJSON("Crow.json", function(crow) {
