@@ -18,12 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() { 
     // User has allowed account access to DApp... 
-    alert('sukses konak');
-    // Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
+    alert('sukses konak bro');
       }
       else{
       	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
@@ -93,6 +88,12 @@ App = {
     loader.show();
     content.hide();
 
+    // Load account data
+    web3.eth.getCoinbase(function(err, account) {
+      if(err === null) {
+        App.account = account;
+        $('#accountAddress').html("Your Account: " + account);
+        
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
