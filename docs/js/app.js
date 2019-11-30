@@ -16,8 +16,7 @@ App = {
      if (window.ethereum) {
      	window.web3 = new Web3(ethereum); try { 
     // Request account access if needed
- await ethereum.enable();
- ethereum.enable().then(function() { 
+ window.ethereum.enable().then(function() { 
     // User has allowed account access to DApp... 
     alert('sukses konak');
     // Load account data
