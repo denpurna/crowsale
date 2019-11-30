@@ -30,7 +30,8 @@ App = {
       	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
       }
     })
-    }); } catch(e) { 
+    });
+    } catch(e) { 
     // User has denied account access to DApp...
     alert('gagal konak');
     }
