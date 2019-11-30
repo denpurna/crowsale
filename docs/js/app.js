@@ -4,7 +4,7 @@ App = {
   account: '0x0',
   loading: false,
   tokenPrice: 100000000000000,
-  tokensSold: 0,
+  tokensSold: 750000,
   tokensAvailable: 7500000,
 
   init: function() {
