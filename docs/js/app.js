@@ -18,6 +18,12 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
+  
+ 	// Load account data
+    web3.eth.getCoinbase(function(err, account) {
+      if(err === null) {
+        App.account = account;
+        $('#accountAddress').html("Your Account: " + account);
  var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
 var MyContract = web3.eth.contract(abiToken);
 var myContractInstance = MyContract.at('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
@@ -28,6 +34,9 @@ var myContractInstance = MyContract.at('0x4093Db3B3c52cb24A2C239820bc7960575af04
       }
       }
       );
+                       }
+        });
+});
     } catch(e) {
 // User has denied account access to
     alert('gagal konak');
@@ -90,15 +99,7 @@ alert('ini render');
 
     loader.html('<div id="preloder"><div class="loader"></div></div>');
     content.hide();
-    
- 	// Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
-                       }
-        });
-
+  
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
