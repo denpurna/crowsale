@@ -17,12 +17,12 @@ App = {
      	window.web3 = new Web3(ethereum); try {
     // Request account access if needed
  window.ethereum.enable().then(function() {
-    // User has allowed account access to DApp... 
+// User has allowed account access
     alert('sukses konak bro');
     $.getJSON("CrowSale.json");
-      }
+      });
     } catch(e) {
-    // User has denied account access to DApp...
+// User has denied account access to
     alert('gagal konak');
     }
    }
@@ -83,7 +83,7 @@ App = {
     loader.show();
     content.hide();
 
-    // Load account data
+ 	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
         App.account = account;
@@ -91,8 +91,9 @@ App = {
         }
         else{
       	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
-      }
-        }
+            }
+        });
+    
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
