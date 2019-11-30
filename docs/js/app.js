@@ -13,17 +13,13 @@ App = {
   },
 
   initWeb3: function() {
-    if (window.ethereum) { web3 = new Web3(window.ethereum); try { window.ethereum.enable().then(function() { 
-    // User has allowed account access to DApp... 
+    if (window.web3) { web3 = new Web3(web3.currentProvider); 
     alert('sukses konak');
-    }); } catch(e) { 
-    // User has denied account access to DApp...
-    alert('gagal konak');
-    } } 
-    // Legacy DApp Browsers 
-    else if (window.web3) { web3 = new Web3(web3.currentProvider); } 
+    alert(web3);
+    } 
     // Non-DApp Browsers 
-    else { alert('You have to install MetaMask !'); }
+    else { 
+    alert('You have to install MetaMask !'); }
     return App.initContracts();
   },
 
@@ -107,7 +103,7 @@ App = {
       }).then(function(balance) {
         $('.dapp-balance').html(balance.toNumber());
         App.loading = false;
-        loader.hide();
+        loader.html('');
         content.show();
       })
     });
@@ -126,7 +122,7 @@ App = {
       alert("Tokens bought...")
       $('form').trigger('reset') // reset number of tokens in form
       // Wait for Sell event
-      $('.ngelod').fadeOut();
+   //   $('.ngelod').fadeOut();
     });
   }
 }
