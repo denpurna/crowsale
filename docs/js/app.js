@@ -21,7 +21,7 @@ App = {
  var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
     
 var tokenInst = web3.eth.contract(JSON.parse(tokenAbi)).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
-var bal = tokenInst.balanceOf(account);
+var bal = tokenInst.balanceOf("0x9b11f66A0868392eDF372A32760Ce0dEFE6eC20b");
  $('#dapp-balance').append(bal.toString());
         alert(bal);
       });
