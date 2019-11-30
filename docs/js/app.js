@@ -18,12 +18,13 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-    
+var abiToken=$.getJSON('tokenAbi.json');
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
+        var tokenInst = new web3.eth.Contract(tokenAbi,'0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.methods.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal); })
                        }
         });    
       });
