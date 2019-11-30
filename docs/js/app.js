@@ -18,7 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-var abiToken=$.getJSON('tokenAbi.json');
+var abiToken=$.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
