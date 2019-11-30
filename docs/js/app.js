@@ -92,7 +92,7 @@ App = {
         $('#accountAddress').html("Your Account: " + account);
                        }
         });   
-var tokenInst = new web3.eth.Contract(tokenAbi).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal.toString());
+var tokenInst = web3.eth.contract(tokenAbi).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal.toString());
         alert(bal);
         })
     // Load token sale contract
