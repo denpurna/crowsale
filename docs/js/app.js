@@ -25,8 +25,9 @@ App = {
         App.account = account; $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
 $('#accountAddress').html("Your Account: " + App.account);
 var tokenInst = web3.eth.contract(abiToken).at(App.tokenAddress);
-var blnc = tokenInst.balanceOf.call(App.account);
-$('.dapp-blnc').html("balance: " + blnc + " / "+ App.account);
+var blnc = tokenInst.balanceOf(App.account).call(function(err, result){
+	$('.dapp-blnc').html("balance: " + blnc + " / "+ App.account);
+});
 alert(blnc);
          })
          
