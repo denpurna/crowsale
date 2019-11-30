@@ -6,9 +6,9 @@ App = {
   tokenPrice: 100000000000000,
   tokensSold: 750000,
   tokensAvailable: 7500000,
-  tarara:'$.getJSON("https://denpurna.github.io/crowsale/CrowSale.json")',
+
   init: function() {
-    $('.jsonnya').html(tarara);
+    alert("App initialized...")
     return App.initWeb3();
   },
 
@@ -18,6 +18,17 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
+    
+ 	// Load account data
+    web3.eth.getCoinbase(function(err, account) {
+      if(err === null) {
+        App.account = account;
+        $('#accountAddress').html("Your Account: " + account);
+        }
+        else{
+      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
+            }
+        });
     
     
       });
@@ -83,17 +94,6 @@ App = {
     loader.show();
     content.hide();
 
- 	// Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
-        }
-        else{
-      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
-            }
-        });
-    
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
