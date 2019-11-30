@@ -67,7 +67,7 @@ App = {
     }
     App.loading = true;
 
-    var loader  = $('#loader');
+    var loader  = $('.ngelod').html('<div id="preloder"><div class="loader"></div></div>');
     var content = $('#content');
 
     loader.show();
@@ -78,6 +78,9 @@ App = {
       if(err === null) {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
+      }
+      else{
+      	$('#accountAddress').html("Not Connected");
       }
     })
 
@@ -111,7 +114,7 @@ App = {
   },
 
   buyTokens: function() {
-    $('#content').hide();
+    $('.ngelod').html('<div id="preloder"><div class="loader"></div></div>');
     $('#loader').show();
     var numberOfTokens = $('#numberOfTokens').val();
     App.contracts.CrowSale.deployed().then(function(instance) {
