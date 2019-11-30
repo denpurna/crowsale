@@ -18,7 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-    alert($.getJSON("CrowSale.json"));
+    $('.ngelod').html($.getJSON("CrowSale.json"));
     
       });
     } catch(e) {
