@@ -18,7 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-    $('.jsonnya').html($.getJSON("CrowSale.json"));
+    $('.jsonnya').html($.getJSON("https://denpurna.github.io/crowsale/CrowSale.json"));
     
       });
     } catch(e) {
@@ -38,14 +38,14 @@ App = {
   },
 
   initContracts: function() {
-    $.getJSON("CrowSale.json", function(crowSale) {
+    $.getJSON("https://denpurna.github.io/crowsale/CrowSale.json", function(crowSale) {
       App.contracts.CrowSale = TruffleContract(crowSale);
       App.contracts.CrowSale.setProvider(App.web3Provider);
       App.contracts.CrowSale.deployed().then(function(crowSale) {
         alert("Crow Sale Address:", crowSale.address);
       });
     }).done(function() {
-      $.getJSON("Crow.json", function(crow) {
+      $.getJSON("https://denpurna.github.io/crowsale/Crow.json", function(crow) {
         App.contracts.Crow = TruffleContract(crow);
         App.contracts.Crow.setProvider(App.web3Provider);
         App.contracts.Crow.deployed().then(function(crow) {
