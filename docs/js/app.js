@@ -18,7 +18,12 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
- return App.initContracts();
+ var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
+    
+var tokenInst = web3.eth.contract(JSON.parse(tokenAbi)).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
+var bal = tokenInst.balanceOf(account);
+ $('#dapp-balance').append(bal.toString());
+        alert(bal);
       });
     } catch(e) {
 // User has denied account access to
@@ -40,7 +45,7 @@ App = {
   initContracts: function() {
     $.getJSON("https://denpurna.github.io/crowsale/CrowSale.json", function(crowSale) {
       App.contracts.CrowSale = TruffleContract(crowSale);
-     alert(App.contracts.CrowSale.address); App.contracts.CrowSale.setProvider(App.web3Provider);
+alert(App.contracts.CrowSale); App.contracts.CrowSale.setProvider(App.web3Provider);
       App.contracts.CrowSale.deployed().then(function(crowSale) {
         alert("Crow Sale Address:", crowSale.address);
       });
@@ -76,14 +81,12 @@ App = {
       return;
     }
     App.loading = true;
-
-    var loader  = $('.ngelod').html('<div id="preloder"><div class="loader"></div></div>');
+alert('ini render');
+    var loader  = $('.ngelod');
     var content = $('#content');
 
-    loader.show();
+    loader.html('<div id="preloder"><div class="loader"></div></div>');
     content.hide();
-    
-    var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
     
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
@@ -91,11 +94,8 @@ App = {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
                        }
-        });   
-var tokenInst = web3.eth.contract(JSON.parse(tokenAbi)).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
-var bal = tokenInst.balanceOf(account);
- $('#dapp-balance').append(bal.toString());
-        alert(bal);
+        });
+
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
