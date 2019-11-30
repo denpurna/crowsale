@@ -18,7 +18,6 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-  alert('masuk sini')
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
@@ -27,10 +26,11 @@ App = {
  var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
 var MyContract = web3.eth.contract(abiToken);
 var myContractInstance = MyContract.at('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
-    var filter = myContractInstance.balanceOf('0x9b11f66A0868392eDF372A32760Ce0dEFE6eC20b', function (error, result) {
+    var filter = myContractInstance.balanceOf({account}, function (error, result) {
  if (!error){
  	alert(result);
  	 $('#dapp-balance').append(result.toString());
+ 	 alert('masuk sini')
       }
       else{
       	alert(error)
