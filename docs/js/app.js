@@ -16,7 +16,7 @@ App = {
      if (window.ethereum) {
      	window.web3 = new Web3(ethereum); try { 
     // Request account access if needed
- window.ethereum.enable().then(function() { 
+ window.ethereum.enable().then(function() {
     // User has allowed account access to DApp... 
     alert('sukses konak bro');
     $.getJSON("CrowSale.json");
@@ -24,9 +24,8 @@ App = {
       else{
       	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
       }
-    })
     });
-    } catch(e) { 
+    } catch(e) {
     // User has denied account access to DApp...
     alert('gagal konak');
     }
@@ -93,7 +92,8 @@ App = {
       if(err === null) {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
-        
+        }
+        }
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
