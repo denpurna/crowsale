@@ -18,17 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-var abiToken=$.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
- 	// Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
-        var tokenInst = new web3.eth.Contract(tokenAbi,'0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.methods.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal);
-        alert(bal);
-        })
-                       }
-        });    
+ 
       });
     } catch(e) {
 // User has denied account access to
@@ -92,7 +82,19 @@ var abiToken=$.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
 
     loader.show();
     content.hide();
-
+    
+    var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
+    
+ 	// Load account data
+    web3.eth.getCoinbase(function(err, account) {
+      if(err === null) {
+        App.account = account;
+        $('#accountAddress').html("Your Account: " + account);
+                       }
+        });   
+var tokenInst = new web3.eth.Contract(tokenAbi).at('0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal.toString());
+        alert(bal);
+        })
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
       crowSaleInstance = instance;
