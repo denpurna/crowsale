@@ -18,7 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-  
+  alert('masuk sini')
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
