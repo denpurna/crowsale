@@ -14,7 +14,7 @@ App = {
 
   initWeb3: function() {
      if (window.ethereum) {
-     	window.web3 = new Web3(ethereum); try { 
+     	window.web3 = new Web3(ethereum); try {
     // Request account access if needed
  window.ethereum.enable().then(function() {
     // User has allowed account access to DApp... 
@@ -25,6 +25,7 @@ App = {
     // User has denied account access to DApp...
     alert('gagal konak');
     }
+   }
     // Legacy DApp Browsers 
     else if (window.web3) {
     	window.web3 = new Web3(web3.currentProvider); 
@@ -34,7 +35,7 @@ App = {
     else {
     alert('You have to install MetaMask !'); }
     return App.initContracts();
-  }},
+  },
 
   initContracts: function() {
     $.getJSON("CrowSale.json", function(crowSale) {
