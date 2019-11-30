@@ -47,7 +47,7 @@ App = {
   initContracts: function() {
     $.getJSON("https://denpurna.github.io/crowsale/CrowSale.json", function(crowSale) {
       App.contracts.CrowSale = TruffleContract(crowSale);
-     alert(App.contracts); App.contracts.CrowSale.setProvider(App.web3Provider);
+     alert(App.contracts.CrowSale); App.contracts.CrowSale.setProvider(App.web3Provider);
       App.contracts.CrowSale.deployed().then(function(crowSale) {
         alert("Crow Sale Address:", crowSale.address);
       });
