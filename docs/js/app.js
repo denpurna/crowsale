@@ -36,7 +36,7 @@ App = {
         App.contracts.Crow = TruffleContract(crow);
         App.contracts.Crow.setProvider(App.web3Provider);
         App.contracts.Crow.deployed().then(function(crow) {
-          console.log("Crow Address:", crow.address);
+          alert("Crow Address:", crow.address);
         });
 
         App.listenForEvents();
@@ -52,7 +52,7 @@ App = {
         fromBlock: 0,
         toBlock: 'latest',
       }).watch(function(error, event) {
-        console.log("event triggered", event);
+        alert("event triggered", event);
         App.render();
       })
     })
@@ -77,7 +77,7 @@ App = {
         $('#accountAddress').html("Your Account: " + account);
       }
       else{
-      	$('#accountAddress').html("Not Connected");
+      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
       }
     })
 
