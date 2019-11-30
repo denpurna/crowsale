@@ -115,7 +115,6 @@ App = {
 
   buyTokens: function() {
     $('.ngelod').html('<div id="preloder"><div class="loader"></div></div>');
-    $('#loader').show();
     var numberOfTokens = $('#numberOfTokens').val();
     App.contracts.CrowSale.deployed().then(function(instance) {
       return instance.buyTokens(numberOfTokens, {
@@ -124,9 +123,10 @@ App = {
         gas: 500000 // Gas limit
       });
     }).then(function(result) {
-      console.log("Tokens bought...")
+      alert("Tokens bought...")
       $('form').trigger('reset') // reset number of tokens in form
       // Wait for Sell event
+      $('.ngelod').fadeOut();
     });
   }
 }
