@@ -13,15 +13,17 @@ App = {
   },
 
   initWeb3: function() {
-    if (typeof web3 !== 'undefined') {
-      // If a web3 instance is already provided by Meta Mask.
-      App.web3Provider = web3.currentProvider;
-      web3 = new Web3(web3.currentProvider);
-    } else {
-      // Specify default instance if no web3 instance provided
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-      web3 = new Web3(App.web3Provider);
-    }
+    if (window.ethereum) { web3 = new Web3(window.ethereum); try { window.ethereum.enable().then(function() { 
+    // User has allowed account access to DApp... 
+    alert('sukses konak');
+    }); } catch(e) { 
+    // User has denied account access to DApp...
+    alert('gagal konak');
+    } } 
+    // Legacy DApp Browsers 
+    else if (window.web3) { web3 = new Web3(web3.currentProvider); } 
+    // Non-DApp Browsers 
+    else { alert('You have to install MetaMask !'); }
     return App.initContracts();
   },
 
