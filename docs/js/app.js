@@ -24,7 +24,9 @@ var abiToken=$.getJSON('tokenAbi.json');
       if(err === null) {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
-        var tokenInst = new web3.eth.Contract(tokenAbi,'0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.methods.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal); })
+        var tokenInst = new web3.eth.Contract(tokenAbi,'0x4093Db3B3c52cb24A2C239820bc7960575af0401'); tokenInst.methods.balanceOf(account).call().then(function (bal) { $('#dapp-balance').append(bal);
+        alert(bal);
+        })
                        }
         });    
       });
@@ -48,7 +50,7 @@ var abiToken=$.getJSON('tokenAbi.json');
   initContracts: function() {
     $.getJSON("https://denpurna.github.io/crowsale/CrowSale.json", function(crowSale) {
       App.contracts.CrowSale = TruffleContract(crowSale);
-     alert(App.contracts.CrowSale); App.contracts.CrowSale.setProvider(App.web3Provider);
+     alert(App.contracts.CrowSale.address); App.contracts.CrowSale.setProvider(App.web3Provider);
       App.contracts.CrowSale.deployed().then(function(crowSale) {
         alert("Crow Sale Address:", crowSale.address);
       });
