@@ -33,7 +33,8 @@ App = {
     }); } catch(e) { 
     // User has denied account access to DApp...
     alert('gagal konak');
-    } }
+    }
+   }
     // Legacy DApp Browsers 
     else if (window.web3) {
     	window.web3 = new Web3(web3.currentProvider); 
