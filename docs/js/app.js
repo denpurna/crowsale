@@ -1,6 +1,7 @@
 App = {
   web3Provider: null,
   contracts: {},
+  tokenAddress: '0x4093Db3B3c52cb24A2C239820bc7960575af0401',
   account: '0x0',
   loading: false,
   tokenPrice: 100000000000000,
@@ -24,10 +25,9 @@ App = {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
  var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
-var MyContract = web3.eth.contract(abiToken);
-var bpnc = web3.eth.getBalance('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
-alert(bpnc.toString());
-    alert('masuk bpnc');
+var tokenInst = web3.eth.contract(abiToken).at(App.tokenAddress);
+var blnc = tokenInst.balanceOf.call(App.account);
+alert(blnc);
          }
         });
 });
