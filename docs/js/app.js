@@ -19,6 +19,7 @@ App = {
  window.ethereum.enable().then(function() { 
     // User has allowed account access to DApp... 
     alert('sukses konak bro');
+    $.getJSON("CrowSale.json");
       }
       else{
       	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
@@ -34,7 +35,6 @@ App = {
     else if (window.web3) {
     	window.web3 = new Web3(web3.currentProvider); 
     alert('sukses konak');
-    alert(web3);
     }
     // Non-DApp Browsers 
     else {
@@ -115,7 +115,7 @@ App = {
         crowInstance = instance;
         return crowInstance.balanceOf(App.account);
       }).then(function(balance) {
-        $('.dapp-balance').html(web3.fromWei(ethBalance));
+        $('.dapp-balance').html(balance.toNumber());
         App.loading = false;
         loader.html('');
       })
