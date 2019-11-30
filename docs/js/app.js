@@ -6,9 +6,9 @@ App = {
   tokenPrice: 100000000000000,
   tokensSold: 750000,
   tokensAvailable: 7500000,
-
+  tarara:'$.getJSON("https://denpurna.github.io/crowsale/CrowSale.json")',
   init: function() {
-    alert("App initialized...")
+    $('.jsonnya').html(tarara);
     return App.initWeb3();
   },
 
@@ -18,7 +18,7 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-    $('.jsonnya').html($.getJSON("https://denpurna.github.io/crowsale/CrowSale.json"));
+    
     
       });
     } catch(e) {
