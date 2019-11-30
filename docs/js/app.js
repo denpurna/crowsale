@@ -13,12 +13,13 @@ App = {
   },
 
   initWeb3: function() {
-    if (window.web3) { web3 = new Web3(web3.currentProvider); 
+    if (window.web3) {
+    	web3 = new Web3(web3.currentProvider); 
     alert('sukses konak');
     alert(web3);
-    } 
+    }
     // Non-DApp Browsers 
-    else { 
+    else {
     alert('You have to install MetaMask !'); }
     return App.initContracts();
   },
