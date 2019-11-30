@@ -13,8 +13,30 @@ App = {
   },
 
   initWeb3: function() {
-    if (window.web3) {
-    	web3 = new Web3(web3.currentProvider); 
+     if (window.ethereum) {
+     	window.web3 = new Web3(ethereum); try { 
+    // Request account access if needed
+ await ethereum.enable();
+ ethereum.enable().then(function() { 
+    // User has allowed account access to DApp... 
+    alert('sukses konak');
+    // Load account data
+    web3.eth.getCoinbase(function(err, account) {
+      if(err === null) {
+        App.account = account;
+        $('#accountAddress').html("Your Account: " + account);
+      }
+      else{
+      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
+      }
+    })
+    }); } catch(e) { 
+    // User has denied account access to DApp...
+    alert('gagal konak');
+    } }
+    // Legacy DApp Browsers 
+    else if (window.web3) {
+    	window.web3 = new Web3(web3.currentProvider); 
     alert('sukses konak');
     alert(web3);
     }
@@ -69,17 +91,6 @@ App = {
 
     loader.show();
     content.hide();
-
-    // Load account data
-    web3.eth.getCoinbase(function(err, account) {
-      if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account);
-      }
-      else{
-      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
-      }
-    })
 
     // Load token sale contract
     App.contracts.CrowSale.deployed().then(function(instance) {
