@@ -34,7 +34,7 @@ App = {
     else {
     alert('You have to install MetaMask !'); }
     return App.initContracts();
-  },
+  }},
 
   initContracts: function() {
     $.getJSON("CrowSale.json", function(crowSale) {
