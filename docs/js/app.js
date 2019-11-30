@@ -26,7 +26,7 @@ App = {
 $('#accountAddress').html("Your Account: " + App.account);
 var tokenInst = web3.eth.contract(abiToken).at(App.tokenAddress);
 var blnc = tokenInst.balanceOf.call(App.account);
-$('#dapp-balances').html("balance: " + blnc + " / "+ account);
+$('.dapp-blnc').html("balance: " + blnc + " / "+ App.account);
 alert(blnc);
          })
          
