@@ -26,8 +26,8 @@ App = {
  var abiToken = $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json');
 var MyContract = web3.eth.contract(abiToken);
 var bpnc = web3.eth.getBalance('0x4093Db3B3c52cb24A2C239820bc7960575af0401');
-alert(bpnc);
-    
+alert(bpnc.toString());
+    alert('masuk bpnc');
          }
         });
 });
