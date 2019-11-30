@@ -115,10 +115,9 @@ App = {
         crowInstance = instance;
         return crowInstance.balanceOf(App.account);
       }).then(function(balance) {
-        $('.dapp-balance').html(balance.toNumber());
+        $('.dapp-balance').html(web3.fromWei(ethBalance));
         App.loading = false;
         loader.html('');
-        content.show();
       })
     });
   },
