@@ -22,8 +22,8 @@ App = {
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
-        App.account = account;
-        $('#accountAddress').html("Your Account: " + account); $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
+        App.account = account; $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
+$('#accountAddress').html("Your Account: " + App.account);
 var tokenInst = web3.eth.contract(abiToken).at(App.tokenAddress);
 var blnc = tokenInst.balanceOf.call(App.account);
 $('#dapp-balances').html("balance: " + blnc + " / "+ account);
