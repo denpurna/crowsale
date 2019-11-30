@@ -18,8 +18,8 @@ App = {
     // Request account access if needed
  window.ethereum.enable().then(function() {
 // User has allowed account access
-    alert('sukses konak bro');
-    $.getJSON("CrowSale.json");
+    alert($.getJSON("CrowSale.json"));
+    
       });
     } catch(e) {
 // User has denied account access to
