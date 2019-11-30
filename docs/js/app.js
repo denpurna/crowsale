@@ -24,13 +24,8 @@ App = {
       if(err === null) {
         App.account = account;
         $('#accountAddress').html("Your Account: " + account);
-        }
-        else{
-      	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
-            }
-        });
-    
-    
+                       }
+        });    
       });
     } catch(e) {
 // User has denied account access to
@@ -44,7 +39,8 @@ App = {
     }
     // Non-DApp Browsers 
     else {
-    alert('You have to install MetaMask !'); }
+    	$('#accountAddress').html("Please connect your wallet (recomended: metamask)");
+    	}
     return App.initContracts();
   },
 
