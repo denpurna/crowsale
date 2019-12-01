@@ -22,11 +22,29 @@ App = {
  	// Load account data
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
-        App.account = account; $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
-var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress); tokenInst.balanceOf(App.account).call().then(function (bal) { alert(bal); })
-	$('#dapp-blnc').html("balance: "  + " / "+ App.account);
+        App.account = account; // $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
+// $('#accountAddress').html("Your Account: " + App.account);
+// var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress); tokenInst.balanceOf(App.account).call().then(function (bal) { alert(bal); })
+alert('Getting contract tokens balance.....'); 
+var addr = (App.account);
+alert("Address: " + addr);
+var contractAddr = (App.tokenAddress); 
+var tknAddress = (addr).substring(2);
+var contractData = ('0x70a08231000000000000000000000000' + tknAddress); 
+web3.eth.call({
+	to: contractAddr,
+ data: contractData
+}, function(err, result) {
+		if (result) { 		var tokens = web3.utils.toBN(result).toString(); 
+var	blnc = web3.utils.fromWei(tokens, 'ether');
+console.log('Tokens Owned: ' + blnc);
+$('#dapp-blnc').html("balance: " + blnc + " / "+ App.account);
+} 	else { 	
+alert(err);
+ 	}
+ 	});
+
 alert('masuk sini');
-$('#accountAddress').html("Your Account: " + App.account);
          })
          
          }
