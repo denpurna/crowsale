@@ -45,7 +45,7 @@ alert(err);
  	});
 
 alert('masuk sini');
-         })
+       //  })
          
          }
         });
