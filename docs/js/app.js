@@ -33,20 +33,20 @@ alert('get token instance');
 var addr = (App.account);
 var contractAddr = (App.tokenAddress); 
 tokenInst.methods.name(887674).send().then(function (result) { alert('1. '+result); });
-
+alert('masuk alert 1'); 
 tokenInst.methods.name().send().then(function (result) { alert('2. '+result); });
-
+alert('masuk alert 2'); 
 tokenInst.methods.balanceOf(887674).send(App.account).then(function (result) { alert('3. '+result); });
-
+alert('masuk alert 3'); 
 web3.eth.call({
 	to: contractAddr,
  data: tokenInst.methods.symbol().encodeABI()
 }).then(balance =>{alert(balance)});
 
-alert('masuk sini');
+alert('all alert sukses di call');
 
  	});
- 	//alert('keluar if');
+ 	alert('keluar if');
         }
         })
       });
