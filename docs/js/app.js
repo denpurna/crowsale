@@ -28,26 +28,20 @@ $('#accountAddress').html("Your Account: " + App.account);
 
 var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress);
 
-// tokenInst.balanceOf(App.account).call().then(function (bal) { alert(bal); })
 alert('Getting contract tokens balance.....'); 
 var addr = (App.account);
-//alert("Address: " + addr);
 var contractAddr = (App.tokenAddress); 
 
 web3.eth.call({
 	to: contractAddr,
  data: tokenInst.methods.symbol().encodeABI()
 }).then(balance =>{alert(balance)});
-//function(err, result) {
-//		if (result) { 		var tokens = web3.utils.toBN(result).toString(); 
-//var	blnc = web3.utils.fromWei(tokens, 'ether');
+web3.eth.call({
+	to: contractAddr,
+ data: tokenInst.methods.standard().encodeABI()
+}).then(balance =>{alert(balance)});
 alert('masuk sini');
-//alert('Tokens Owned: ' + blnc);
-//$('#dapp-blnc').html("balance: " + blnc + " / "+ App.account);
-//} 	else { 	
-//alert(err);
-// 	}
-//}
+
  	});
         }
         })
