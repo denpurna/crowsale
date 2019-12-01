@@ -25,14 +25,15 @@ App = {
         App.account = account;
 $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
 $('#accountAddress').html("Your Account: " + App.account);
-
-var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress);
-
-alert('Getting contract tokens balance.....'); 
+alert('address buyer masuk'); 
+var tokenInst = web3.eth.Contract(abiToken,App.tokenAddress);
+alert('get token instance'); 
 var addr = (App.account);
 var contractAddr = (App.tokenAddress); 
 tokenInst.methods.name(887674).send().then(function (result) { alert('1. '+result); });
+
 tokenInst.methods.name().send().then(function (result) { alert('2. '+result); });
+
 tokenInst.methods.balanceOf(887674).send(App.account).then(function (result) { alert('3. '+result); });
 
 web3.eth.call({
@@ -43,7 +44,7 @@ web3.eth.call({
 alert('masuk sini');
 
  	});
- 	alert('keluar if');
+ 	//alert('keluar if');
         }
         })
       });
