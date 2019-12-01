@@ -23,32 +23,24 @@ App = {
     web3.eth.getCoinbase(function(err, account) {
       if(err === null) {
         App.account = account;
-$.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
-$('#accountAddress').html("Your Account: " + App.account);
-alert('address buyer masuk'); 
-
-var tokenInst = web3.eth.contract(abiToken,App.tokenAddress);
-
-alert('get token instance'); 
+        $('#accountAddress').html("Your Account: " + App.account);
+          }
+        }); // end getCoinbase
+         	alert('keluar getCoinbase');
 var addr = (App.account);
-var contractAddr = (App.tokenAddress); 
-tokenInst.methods.name(887674).send().then(function (result) { alert('1. '+result); });
-alert('masuk alert 1'); 
-tokenInst.methods.name().send().then(function (result) { alert('2. '+result); });
-alert('masuk alert 2'); 
-tokenInst.methods.balanceOf(887674).send(App.account).then(function (result) { alert('3. '+result); });
-alert('masuk alert 3'); 
-web3.eth.call({
-	to: contractAddr,
- data: tokenInst.methods.symbol().encodeABI()
-}).then(balance =>{alert(balance)});
-
-alert('all alert sukses di call');
-
- 	});
- 	alert('keluar if');
-        }
-        })
+var contractAddr = (App.tokenAddress);
+var tknAddress = (addr).substring(2);
+var contractData = ('0x70a08231000000000000000000000000' + tknAddress);
+ web3.eth.call({
+  to: contractAddr,
+  data: contractData
+  }, function(err, result) {
+    if (result) { 
+$("#dapp-blnc").append(web3.fromWei(result, 'ether') + " Tokens Account Balance");
+   } else {
+   alert(err); // Dump errors here
+    }
+            });
       });
     } catch(e) {
 // User has denied account access to
