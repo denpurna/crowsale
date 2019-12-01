@@ -27,7 +27,7 @@ App = {
 // var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress); tokenInst.balanceOf(App.account).call().then(function (bal) { alert(bal); })
 alert('Getting contract tokens balance.....'); 
 var addr = (App.account);
-alert("Address: " + addr);
+//alert("Address: " + addr);
 var contractAddr = (App.tokenAddress); 
 var tknAddress = (addr).substring(2);
 var contractData = ('0x70a08231000000000000000000000000' + tknAddress); 
@@ -37,14 +37,13 @@ web3.eth.call({
 }, function(err, result) {
 		if (result) { 		var tokens = web3.utils.toBN(result).toString(); 
 var	blnc = web3.utils.fromWei(tokens, 'ether');
-console.log('Tokens Owned: ' + blnc);
+alert('masuk sini');
+alert('Tokens Owned: ' + blnc);
 $('#dapp-blnc').html("balance: " + blnc + " / "+ App.account);
 } 	else { 	
 alert(err);
  	}
  	});
-
-alert('masuk sini');
        //  })
          
          }
