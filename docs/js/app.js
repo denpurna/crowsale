@@ -33,11 +33,10 @@ alert('Getting contract tokens balance.....');
 var addr = (App.account);
 //alert("Address: " + addr);
 var contractAddr = (App.tokenAddress); 
-var tknAddress = (addr).substring(2);
-var contractData = ('0x70a08231000000000000000000000000' + tknAddress); 
+
 web3.eth.call({
 	to: contractAddr,
- data: tokenInst.methods.balanceOf(App.account).encodeABI()
+ data: tokenInst.methods.symbol().encodeABI()
 }).then(balance =>{alert(balance)});
 //function(err, result) {
 //		if (result) { 		var tokens = web3.utils.toBN(result).toString(); 
