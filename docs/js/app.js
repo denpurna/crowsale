@@ -26,7 +26,9 @@ App = {
 $.getJSON('https://denpurna.github.io/crowsale/tokenAbi.json', function(abiToken){
 $('#accountAddress').html("Your Account: " + App.account);
 alert('address buyer masuk'); 
-var tokenInst = web3.eth.Contract(abiToken,App.tokenAddress);
+
+var tokenInst = web3.eth.contract(abiToken,App.tokenAddress);
+
 alert('get token instance'); 
 var addr = (App.account);
 var contractAddr = (App.tokenAddress); 
