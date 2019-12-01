@@ -38,7 +38,7 @@ var contractData = ('0x70a08231000000000000000000000000' + tknAddress);
     if (result) { 
 $("#dapp-blnc").append(web3.fromWei(result, 'ether') + " Tokens Account Balance");
    } else {
-   alert(err); // Dump errors here
+   alert('error cuy'); // Dump errors here
     }
             });
       });
@@ -62,8 +62,9 @@ $("#dapp-blnc").append(web3.fromWei(result, 'ether') + " Tokens Account Balance"
   initContracts: function() {
     $.getJSON("https://denpurna.github.io/crowsale/CrowSale.json", function(crowSale) {
       App.contracts.CrowSale = TruffleContract(crowSale);
-alert(App.contracts.CrowSale); App.contracts.CrowSale.setProvider(App.web3Provider);
-      App.contracts.CrowSale.deployed().then(function(crowSale) {
+//alert(App.contracts.CrowSale);
+App.contracts.CrowSale.setProvider(App.web3Provider);
+App.contracts.CrowSale.deployed().then(function(crowSale) {
         alert("Crow Sale Address:", crowSale.address);
       });
     }).done(function() {
