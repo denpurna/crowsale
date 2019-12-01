@@ -31,18 +31,19 @@ var tokenInst = new web3.eth.Contract(abiToken,App.tokenAddress);
 alert('Getting contract tokens balance.....'); 
 var addr = (App.account);
 var contractAddr = (App.tokenAddress); 
+tokenInst.methods.name(887674).send().then(function (result) { alert('1. '+result); });
+tokenInst.methods.name().send().then(function (result) { alert('2. '+result); });
+tokenInst.methods.balanceOf(887674).send(App.account).then(function (result) { alert('3. '+result); });
 
 web3.eth.call({
 	to: contractAddr,
  data: tokenInst.methods.symbol().encodeABI()
 }).then(balance =>{alert(balance)});
-web3.eth.call({
-	to: contractAddr,
- data: tokenInst.methods.standard().encodeABI()
-}).then(balance =>{alert(balance)});
+
 alert('masuk sini');
 
  	});
+ 	alert('keluar if');
         }
         })
       });
